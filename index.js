@@ -8,6 +8,7 @@ var bot = linebot({
 });
 
 bot.on('message', function(event) {
+  console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
     var msg = "重複您的文字：\n" + event.message.text;
     event.reply(msg).then(function(data) {
