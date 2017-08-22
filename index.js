@@ -9,7 +9,7 @@ var bot = linebot({
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = event.message.text;
+    var msg = "重複您的文字：\n" + event.message.text;
     event.reply(msg).then(function(data) {
       // success 
       console.log(msg);
