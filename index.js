@@ -21,6 +21,13 @@ bot.on('message', function(event) {
   }
 });
 
+setTimeout(function(){
+    var userId = 'U6115460e285756fe151d0dd2a090e464';
+    var sendMsg = '阿囉哈～～ＸＤ';
+    bot.push(userId,sendMsg);
+    console.log('send: '+sendMsg);
+},5000);
+
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
