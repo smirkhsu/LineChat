@@ -5,7 +5,7 @@ var request = require("request");
 var cheerio = require("cheerio");
 var fs = require("fs");
 
-var result = ""
+var result = "";
 
 var bot = linebot({
   channelId: 1530656843,
