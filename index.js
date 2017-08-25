@@ -21,9 +21,9 @@ bot.on('message', function(event) {
     console.log(result);
     var msg = event.message.text;
     var reply_msg = '';
-    if(msg.indexOf('嗨') || msg.indexOf('Hi')) {
+    if(msg.indexOf('嗨') !== -1 || msg.indexOf('Hi')!== -1) {
       reply_msg = '哈囉～';
-    } else if(msg.indexOf('日幣') || msg.indexOf('日圓')) {
+    } else if(msg.indexOf('日幣')!== -1 || msg.indexOf('日圓')!== -1) {
       reply_msg = '目前匯率：\n' + result;
     } else {
       reply_msg = '抱歉，不知道「'+msg+'」是什麼意思 :p'
