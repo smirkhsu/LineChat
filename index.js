@@ -1,9 +1,9 @@
 var linebot = require('linebot');
 var express = require('express');
 var request = require('request');
-// var cheerio = require("cheerio");
-// var fs = require("fs");
-// var result = "";
+var cheerio = require('cheerio');
+var fs = require('fs');
+var result;
 
 var bot = linebot({
   channelId: 1530656843,
@@ -16,7 +16,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     // jp();
     console.log(result);
-    var msg = "重複您的文字：\n" + result;
+    var msg = "目前日元匯率：\n" + result;
     event.reply(msg).then(function(data) {
       // success 
       console.log(msg);
@@ -27,22 +27,22 @@ bot.on('message', function(event) {
   }
 });
 
-// var jp = function() {
-//   request({
-//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-//     method: "GET"
-//   }, function(error, response, body) {
-//     if (error || !body) {
-//       return;
-//     }
-//     // 爬完網頁後要做的事情
-//     // console.log(body);
-//     var $ = cheerio.load(body);
-//     var target = $(".rate-content-sight.text-right.print_hide")
-//     //var result = target[15].children[0].data;
-//     result = target[15].children[0].data;
-//   });
-// };
+var jp = function() {
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    }
+    // 爬完網頁後要做的事情
+    // console.log(body);
+    var $ = cheerio.load(body);
+    var target = $(".rate-content-sight.text-right.print_hide")
+    //var result = target[15].children[0].data;
+    result = target[15].children[0].data;
+  });
+};
 
 const app = express();
 const linebotParser = bot.parser();

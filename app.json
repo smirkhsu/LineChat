@@ -3,6 +3,6 @@
   "description": "",
   "repository": "https://github.com/smirkhsu/LineChat.git",
   "logo": "",
-  "keywords": ["node", "express", "heroku","request"],
+  "keywords": ["node", "express", "heroku","request","cheerio","fs"],
   "image": ""
 }
