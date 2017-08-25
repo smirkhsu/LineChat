@@ -1,5 +1,9 @@
 var linebot = require('linebot');
 var express = require('express');
+var request = require('request');
+// var cheerio = require("cheerio");
+// var fs = require("fs");
+// var result = "";
 
 var bot = linebot({
   channelId: 1530656843,
@@ -10,7 +14,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
-    jp();
+    // jp();
     console.log(result);
     var msg = "重複您的文字：\n" + result;
     event.reply(msg).then(function(data) {
@@ -39,13 +43,6 @@ bot.on('message', function(event) {
 //     result = target[15].children[0].data;
 //   });
 // };
-
-// setTimeout(function(){
-//     var userId = "U6115460e285756fe151d0dd2a090e464";
-//     var sendMsg = "阿囉哈～～ＸＤ";
-//     bot.push(userId,sendMsg);
-//     console.log('send: '+sendMsg);
-// },5000);
 
 const app = express();
 const linebotParser = bot.parser();
