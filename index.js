@@ -1,10 +1,5 @@
 var linebot = require('linebot');
 var express = require('express');
-//var request = require("request");
-var cheerio = require("cheerio");
-var fs = require("fs");
-
-var result = "";
 
 var bot = linebot({
   channelId: 1530656843,
