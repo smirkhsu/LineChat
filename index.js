@@ -3,6 +3,7 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var fs = require('fs');
+var result;
 
 var bot = linebot({
   channelId: 1530656843,
@@ -10,10 +11,20 @@ var bot = linebot({
   channelAccessToken: "oTEtHgzuiDtqd61VAfQebC2W6neeYUVicjRGo1nB+tgwUt7ySj9MYzHkVhF+Po3DYQWyWrPnromZWRID37Cwl3cq47TOn680VteO43JMHnsEjPMBh6HyPK/xmA0J/sdfqcB3FqZrIhLyJUnlOFKILwdB04t89/1O/w1cDnyilFU="
 });
 
+jp();
+
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
   if (event.message.type = 'text') {
-    jp();
+    console.log(result);
+    var msg = "目前日圓匯率：\n" + result;
+    event.reply(msg).then(function(data) {
+      // success 
+      console.log(msg);
+    }).catch(function(error) {
+      // error 
+      console.log('error');
+    });
   }
 });
 
@@ -29,17 +40,8 @@ var jp = function() {
     // console.log(body);
     var $ = cheerio.load(body);
     var target = $(".rate-content-sight.text-right.print_hide")
-    var result = target[15].children[0].data;
+    // var result = target[15].children[0].data;
     result = target[15].children[0].data;
-    console.log(result);
-    var msg = "目前日圓匯率：\n" + result;
-    event.reply(msg).then(function(data) {
-      // success 
-      console.log(msg);
-    }).catch(function(error) {
-      // error 
-      console.log('error');
-    });
   });
 };
 
