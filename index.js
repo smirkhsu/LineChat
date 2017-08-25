@@ -11,7 +11,7 @@ var bot = linebot({
   channelAccessToken: "oTEtHgzuiDtqd61VAfQebC2W6neeYUVicjRGo1nB+tgwUt7ySj9MYzHkVhF+Po3DYQWyWrPnromZWRID37Cwl3cq47TOn680VteO43JMHnsEjPMBh6HyPK/xmA0J/sdfqcB3FqZrIhLyJUnlOFKILwdB04t89/1O/w1cDnyilFU="
 });
 
-jp();
+_getJP();
 
 bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
@@ -28,22 +28,22 @@ bot.on('message', function(event) {
   }
 });
 
-var jp = function() {
+function _getJP() {
   request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    }
-    // 爬完網頁後要做的事情
-    // console.log(body);
-    var $ = cheerio.load(body);
-    var target = $(".rate-content-sight.text-right.print_hide")
-    // var result = target[15].children[0].data;
-    result = target[15].children[0].data;
-  });
-};
+      url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+      method: "GET"
+    }, function(error, response, body) {
+      if (error || !body) {
+        return;
+      }
+      // 爬完網頁後要做的事情
+      // console.log(body);
+      var $ = cheerio.load(body);
+      var target = $(".rate-content-sight.text-right.print_hide")
+      // var result = target[15].children[0].data;
+      result = target[15].children[0].data;
+    });
+}
 
 const app = express();
 const linebotParser = bot.parser();
