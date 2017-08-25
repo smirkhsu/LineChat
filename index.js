@@ -11,14 +11,25 @@ var bot = linebot({
   channelAccessToken: "oTEtHgzuiDtqd61VAfQebC2W6neeYUVicjRGo1nB+tgwUt7ySj9MYzHkVhF+Po3DYQWyWrPnromZWRID37Cwl3cq47TOn680VteO43JMHnsEjPMBh6HyPK/xmA0J/sdfqcB3FqZrIhLyJUnlOFKILwdB04t89/1O/w1cDnyilFU="
 });
 
+//取得日幣匯率
 _getJP();
 
 bot.on('message', function(event) {
-  console.log(event); //把收到訊息的 event 印出來看看
+  //把收到訊息的 event 印出來看看
+  console.log(event); 
   if (event.message.type = 'text') {
     console.log(result);
-    var msg = "目前日圓匯率：\n" + result;
-    event.reply(msg).then(function(data) {
+    var msg = event.message.text;
+    var reply_msg = '';
+    if(msg.indexOf('嗨') || msg.indexOf('Hi')) {
+      reply_msg = '哈囉～';
+    } else if(msg.indexOf('日幣') || msg.indexOf('日圓')) {
+      reply_msg = '目前匯率：\n' + result;
+    } else {
+      reply_msg = '抱歉，不知道「'+msg+'」是什麼意思 :p'
+    }
+
+    event.reply(reply_msg).then(function(data) {
       // success 
       console.log(msg);
     }).catch(function(error) {
