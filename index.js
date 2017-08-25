@@ -1,7 +1,6 @@
 var linebot = require('linebot');
 var express = require('express');
-
-var request = require("request");
+//var request = require("request");
 var cheerio = require("cheerio");
 var fs = require("fs");
 
@@ -29,22 +28,22 @@ bot.on('message', function(event) {
   }
 });
 
-var jp = function() {
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    }
-    // 爬完網頁後要做的事情
-    // console.log(body);
-    var $ = cheerio.load(body);
-    var target = $(".rate-content-sight.text-right.print_hide")
-    //var result = target[15].children[0].data;
-    result = target[15].children[0].data;
-  });
-};
+// var jp = function() {
+//   request({
+//     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     }
+//     // 爬完網頁後要做的事情
+//     // console.log(body);
+//     var $ = cheerio.load(body);
+//     var target = $(".rate-content-sight.text-right.print_hide")
+//     //var result = target[15].children[0].data;
+//     result = target[15].children[0].data;
+//   });
+// };
 
 // setTimeout(function(){
 //     var userId = "U6115460e285756fe151d0dd2a090e464";
