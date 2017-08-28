@@ -22,8 +22,8 @@ bot.on('message', function(event) {
     var msg = event.message.text;
     var reply_msg = '';
     if(msg.indexOf('嗨') !== -1 || msg.indexOf('Hi')!== -1) {
-      var emojified = emoji.emojify('哈囉～:poop::poop::poop:');
-      reply_msg = emojified;
+      // var emojified = emoji.emojify('哈囉～:poop::poop::poop:');
+      reply_msg = '哈囉～🤘🤘🤘';
     } else if(msg.indexOf('日幣')!== -1 || msg.indexOf('日圓')!== -1) {
       reply_msg = '目前匯率：\n' + result;
     } else {
