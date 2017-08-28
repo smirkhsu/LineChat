@@ -11,7 +11,6 @@ var bot = linebot({
   channelAccessToken: "oTEtHgzuiDtqd61VAfQebC2W6neeYUVicjRGo1nB+tgwUt7ySj9MYzHkVhF+Po3DYQWyWrPnromZWRID37Cwl3cq47TOn680VteO43JMHnsEjPMBh6HyPK/xmA0J/sdfqcB3FqZrIhLyJUnlOFKILwdB04t89/1O/w1cDnyilFU="
 });
 
-//取得日幣匯率
 _getJP();
 
 bot.on('message', function(event) {
@@ -22,7 +21,7 @@ bot.on('message', function(event) {
     var msg = event.message.text;
     var reply_msg = '';
     if(msg.indexOf('嗨') !== -1 || msg.indexOf('Hi')!== -1) {
-      reply_msg = '哈囉～';
+      reply_msg = '哈囉～:poop::poop::poop:';
     } else if(msg.indexOf('日幣')!== -1 || msg.indexOf('日圓')!== -1) {
       reply_msg = '目前匯率：\n' + result;
     } else {
@@ -39,6 +38,7 @@ bot.on('message', function(event) {
   }
 });
 
+//取得日幣匯率
 function _getJP() {
   request({
       url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
