@@ -2,6 +2,7 @@ var linebot = require('linebot');
 var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
+var emoji = require('node-emoji')
 var fs = require('fs');
 var result;
 
@@ -21,7 +22,8 @@ bot.on('message', function(event) {
     var msg = event.message.text;
     var reply_msg = '';
     if(msg.indexOf('嗨') !== -1 || msg.indexOf('Hi')!== -1) {
-      reply_msg = '哈囉～:poop::poop::poop:';
+      var emojified = emoji.emojify('哈囉～:poop::poop::poop:');
+      reply_msg = emojified;
     } else if(msg.indexOf('日幣')!== -1 || msg.indexOf('日圓')!== -1) {
       reply_msg = '目前匯率：\n' + result;
     } else {
